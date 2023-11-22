@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
+import { TiendaComponent } from './pages/tienda/tienda.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TiendaComponent,
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule
