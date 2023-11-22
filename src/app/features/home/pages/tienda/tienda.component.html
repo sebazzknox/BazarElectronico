@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>ElectroBazar</h2>
+  <hr />
+  <h3>Productos</h3>
+  <div *ngFor="let product of products">
+    <ul>
+      <li>Imagen: {{ product.image }}</li>
+      <li>Nombre: {{ product.name }}</li>
+      <li>Descripcion: {{ product.description }}</li>
+    </ul>
+  </div>
+</div>
