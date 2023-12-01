@@ -1,0 +1,7 @@
+<span>Imagen: </span
+><img [src]="product.image" alt="Imagen de {{ product.name }}" />
+<h3 class="my-0">Nombre: {{ product.name }}</h3>
+<h4 class="mb-0">Descripcion: {{ product.description }}</h4>
+<a [routerLink]="['/detalles', product.id]">Ver más</a>
+<br />
+<br />
