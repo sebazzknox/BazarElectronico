@@ -1,0 +1,22 @@
+<div class="container surface-50">
+  <div class="mx-auto" style="max-width: 38rem">
+    <mat-form-field class="example-form-field">
+      <input matInput type="text" name="search" [(ngModel)]="value" #filter />
+      <button
+        matPrefix
+        mat-icon-button
+        aria-label="Search"
+        type="button"
+        (click)="filterResults(filter.value)"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <h2 class="my-3">Productos</h2>
+    <app-producto
+      *ngFor="let product of filteredProductList"
+      [product]="product"
+    >
+    </app-producto>
+  </div>
+</div>
