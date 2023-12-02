@@ -1,7 +1,12 @@
-<span>Imagen: </span
-><img [src]="product.image" alt="Imagen de {{ product.name }}" />
-<h3 class="my-0">Nombre: {{ product.name }}</h3>
-<h4 class="mb-0">Descripcion: {{ product.description }}</h4>
-<a [routerLink]="['/detalles', product.id]">Ver más</a>
-<br />
-<br />
+<div class="flex lg:flex-row lg:wrap">
+  <div class="producto">
+    <h3>{{ product.name }}</h3>
+    <img [src]="product.image" alt="Imagen de {{ product.name }}" />
+    <p class="precio mt-1">Precio: {{ product.price | currency }}</p>
+    <button class="ripple">Comprar</button>
+    <div class="detalles" *ngIf="product.description">
+      <h4 class="my-1">Detalles del Producto:</h4>
+      <p class="mb-0">{{ product.description }}</p>
+    </div>
+  </div>
+</div>
