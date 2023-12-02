@@ -1,22 +1,57 @@
 <div class="container surface-50">
-  <div class="mx-auto" style="max-width: 38rem">
-    <mat-form-field class="example-form-field">
-      <input matInput type="text" name="search" [(ngModel)]="value" #filter />
-      <button
-        matPrefix
-        mat-icon-button
-        aria-label="Search"
-        type="button"
-        (click)="filterResults(filter.value)"
+  <div class="mx-auto fit">
+    <div class="flex flex-column wrap justify-content-start">
+      <mat-form-field class="example-form-field">
+        <input matInput type="text" name="search" [(ngModel)]="value" #filter />
+        <button
+          matPrefix
+          mat-icon-button
+          aria-label="Search"
+          type="button"
+          (click)="filterResults(filter.value)"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-paginator
+        class="surface-50 flex"
+        [length]="filteredProductList.length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        [showFirstLastButtons]="true"
+        [pageIndex]="currentPage"
+        (page)="handlePageEvent($event)"
+        aria-label="Select page"
       >
-        <mat-icon>search</mat-icon>
-      </button>
-    </mat-form-field>
+      </mat-paginator>
+    </div>
     <h2 class="my-3">Productos</h2>
-    <app-producto
-      *ngFor="let product of filteredProductList"
-      [product]="product"
+    <ng-container *ngIf="value === ''">
+      <app-producto
+        *ngFor="let product of productList | paginator : pageSize : pageNumber"
+        [product]="product"
+      >
+      </app-producto>
+    </ng-container>
+    <ng-container *ngIf="value">
+      <app-producto
+        *ngFor="
+          let product of filteredProductList | paginator : pageSize : pageNumber
+        "
+        [product]="product"
+      ></app-producto>
+    </ng-container>
+
+    <mat-paginator
+      class="surface-50 flex"
+      [length]="filteredProductList.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      [showFirstLastButtons]="true"
+      [pageIndex]="currentPage"
+      (page)="handlePageEvent($event)"
+      aria-label="Select page"
     >
-    </app-producto>
+    </mat-paginator>
   </div>
 </div>
