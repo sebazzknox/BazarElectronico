@@ -1,6 +1,6 @@
-<div class="container surface-50">
+<div class="surface-50">
   <div class="mx-auto fit">
-    <div class="flex flex-column wrap justify-content-start">
+    <div>
       <mat-form-field class="example-form-field">
         <input matInput type="text" name="search" [(ngModel)]="value" #filter />
         <button
@@ -13,35 +13,25 @@
           <mat-icon>search</mat-icon>
         </button>
       </mat-form-field>
-      <mat-paginator
-        class="surface-50 flex"
-        [length]="filteredProductList.length"
-        [pageSize]="pageSize"
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        [showFirstLastButtons]="true"
-        [pageIndex]="currentPage"
-        (page)="handlePageEvent($event)"
-        aria-label="Select page"
-      >
-      </mat-paginator>
     </div>
-    <h2 class="my-3">Productos</h2>
-    <ng-container *ngIf="value === ''">
-      <app-producto
-        *ngFor="let product of productList | paginator : pageSize : pageNumber"
-        [product]="product"
-      >
-      </app-producto>
-    </ng-container>
-    <ng-container *ngIf="value">
-      <app-producto
+    <h2>Productos</h2>
+    <div class="wrapper">
+      <div
+        class="producto"
         *ngFor="
           let product of filteredProductList | paginator : pageSize : pageNumber
         "
-        [product]="product"
-      ></app-producto>
-    </ng-container>
-
+      >
+        <h3>{{ product.name }}</h3>
+        <img [src]="product.image" alt="imagen de {{ product.name }}" />
+        <p class="precio">Precio: {{ product.price | currency }}</p>
+        <button class="ripple">Comprar</button>
+        <div class="detalles">
+          <h4>Detalles del producto:</h4>
+          <p>{{ product.description }}</p>
+        </div>
+      </div>
+    </div>
     <mat-paginator
       class="surface-50 flex"
       [length]="filteredProductList.length"

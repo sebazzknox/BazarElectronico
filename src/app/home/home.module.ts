@@ -10,11 +10,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { PaginatorPipe } from '../pipes/paginator.pipe';
 import { HomeRoutingModule } from './home-routing.module';
-import { ProductoComponent } from './pages/producto/producto.component';
 import { TiendaComponent } from './pages/tienda/tienda.component';
 
 @NgModule({
-  declarations: [TiendaComponent, ProductoComponent, PaginatorPipe],
+  declarations: [TiendaComponent, PaginatorPipe],
   imports: [
     CommonModule,
     HomeRoutingModule,
