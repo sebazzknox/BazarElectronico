@@ -25,7 +25,7 @@ import { LayoutComponent } from './components/layout/layout.component';
         // { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },
         // { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
         //{ path: 'notfound', component: PageNotFoundComponent },
-        { path: '**', redirectTo: '/notfound' },
+        { path: '**', redirectTo: '/notfound', pathMatch: 'full' },
       ],
       {
         scrollPositionRestoration: 'enabled',
