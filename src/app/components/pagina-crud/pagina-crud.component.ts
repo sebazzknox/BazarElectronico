@@ -8,6 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PaginaCrudComponent implements OnInit {
   form: FormGroup;
+  // id: number;
+  operacion: string = 'Agregar ';
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -16,10 +18,11 @@ export class PaginaCrudComponent implements OnInit {
       price: [null, Validators.required],
     });
   }
-
-  addProduct() {}
-
   ngOnInit(): void {
     throw new Error('Method not implemented.');
+  }
+
+  addProduct() {
+    console.log(this.form.value.name);
   }
 }

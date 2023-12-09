@@ -6,10 +6,9 @@ import { LayoutModule } from './components/layout/layout.module';
 import { HomeModule } from './home/home.module';
 
 import { AppComponent } from './app.component';
-import { PaginaCrudComponent } from './components/pagina-crud/pagina-crud.component';
 
 @NgModule({
-  declarations: [AppComponent, PaginaCrudComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
