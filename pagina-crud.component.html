@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h2>Agregar Nuevo Producto</h2>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="addProduct()" class="product-form">
+        <!-- Nombre del Producto -->
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Ingrese el nombre del producto"
+          />
+          <span *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched" class="error-message">
+            El nombre es <strong>requerido</strong>
+          </span>
+        </div>
+
+        <!-- Descripción del Producto -->
+        <div class="form-group">
+          <label for="description">Descripción:</label>
+          <textarea
+            formControlName="description"
+            class="form-control"
+            placeholder="Ingrese la descripción del producto"
+          ></textarea>
+          <span *ngIf="form.get('description')?.hasError('required') && form.get('description')?.touched" class="error-message">
+            La descripción es <strong>requerida</strong>
+          </span>
+        </div>
+
+        <!-- Precio del Producto -->
+        <div class="form-group">
+          <label for="price">Precio:</label>
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input
+              formControlName="price"
+              type="number"
+              class="form-control"
+              placeholder="Ingrese el precio del producto"
+            />
+          </div>
+          <span *ngIf="form.get('price')?.hasError('required') && form.get('price')?.touched" class="error-message">
+            El precio es <strong>requerido</strong>
+          </span>
+        </div>
+
+        <!-- Foto del Producto -->
+        <div class="form-group">
+          <label for="photo">Foto del Producto:</label>
+          <input
+            type="file"
+            class="form-control"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+          />
+          <span *ngIf="selectedFile">Archivo seleccionado: {{ selectedFile.name }}</span>
+        </div>
+          <!-- Agregar lógica en tu componente para manejar la selección de archivos -->
+      
+
+        <!-- Botones -->
+        <div class="button-container mt-4">
+          <button routerLink="/" type="button" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Volver
+          </button>
+          <button [disabled]="form.invalid" type="submit" class="btn btn-success">
+            <i class="fas fa-check"></i> Aceptar
+          </button>
+        </div>
+      
+  
+
